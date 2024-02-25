@@ -1,6 +1,7 @@
 package org.Project.RestaurantManagementProject.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.Project.RestaurantManagementProject.model.Cuisine;
 import org.Project.RestaurantManagementProject.service.CuisineService;
@@ -26,7 +27,7 @@ public class CuisineController {
     }
 
     @GetMapping("/{id}")
-    public Cuisine getCuisineById(@PathVariable Long id) {
+    public Optional<Cuisine> getCuisineById(@PathVariable Long id) {
         return cuisineService.getCuisineById(id);
     }
 
@@ -35,25 +36,18 @@ public class CuisineController {
         return cuisineService.addCuisine(cuisine);
     }
 
-    @GetMapping("/search")
-    public List<Cuisine> searchCuisine(
-              String name,
-            @RequestParam(required = false) String description,
-            @RequestParam(required = false) Double price) {
-        if (name != null) {
-            return cuisineService.getCuisineByName(name);
-        } 
-        else if (price != null) {
-            return cuisineService.getCuisineByPrice(price);
-        }
-        else {
-            return cuisineService.getAllCuisines();
-        }
-    }
+//    @GetMapping("/search")
+//    public List<Cuisine> searchCuisine(
+//            @RequestParam(required = false) String name,
+//            @RequestParam(required = false) Double price) {
+//        if (name != null) {
+//            return cuisineService.getCuisineByName(name);
+//        } else if (price != null) {
+//            return cuisineService.getCuisineByPrice(price);
+//        } else {
+//            return cuisineService.getAllCuisines();
+//        }
+//    }
 
-    @GetMapping("/{id}/revenue")
-    public double calculateRevenue(@PathVariable Long id, @RequestParam int quantity) {
-        return cuisineService.calculateTotalCost(id, quantity);
-    }
+  
 }
-

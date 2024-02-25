@@ -8,41 +8,37 @@ import jakarta.persistence.Id;
 @Entity
 public class Cuisine {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CusineId;
+    private Long cusineId;
 
-    private String CusineName;
-    private double CusinePrice;
+    private String cusineName;
 
-	public double getPrice() {
-		return CusinePrice;
-	}
-
-	public void setPrice(double CusinePrice) {
-		this.CusinePrice = CusinePrice;
-	}
+    private double cusinePrice;
 
 	public Long getCusineId() {
-		return CusineId;
+		return cusineId;
 	}
 
-	public void setCusineId(Long Cusineid) {
-		this.CusineId = Cusineid;
+	public void setCusineId(Long cusineId) {
+		this.cusineId = cusineId;
 	}
 
 	public String getCusineName() {
-		return CusineName;
+		return cusineName;
 	}
 
-	public void setCusineName(String name) {
-		this.CusineName = name;
+	public void setCusineName(String cusineName) {
+		this.cusineName = cusineName;
 	}
 
-	public double calculatePrice(int quantity) {
-        return CusinePrice * quantity;
+	public double getCusinePrice() {
+		return cusinePrice;
 	}
-   
+
+	public void setCusinePrice(double cusinePrice) {
+		this.cusinePrice = cusinePrice;
+	}
+
+    
 }
-

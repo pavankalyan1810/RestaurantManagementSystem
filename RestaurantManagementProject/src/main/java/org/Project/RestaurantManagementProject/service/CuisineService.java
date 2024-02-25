@@ -1,6 +1,7 @@
 package org.Project.RestaurantManagementProject.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.Project.RestaurantManagementProject.model.Cuisine;
 import org.Project.RestaurantManagementProject.repository.CuisineRepository;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CuisineService {
-
 
     @Autowired
     private CuisineRepository cuisineRepository;
@@ -22,25 +22,17 @@ public class CuisineService {
         return cuisineRepository.save(cuisine);
     }
 
-    public Cuisine getCuisineById(Long id) {
-        return cuisineRepository.findById(id).orElse(null);
+    public Optional<Cuisine> getCuisineById(Long id) {
+        return cuisineRepository.findById(id);
     }
 
     public List<Cuisine> getCuisineByName(String name) {
-        return cuisineRepository.findByName(name);
+        return cuisineRepository.findByCusineName(name);
     }
-
-    
 
     public List<Cuisine> getCuisineByPrice(double price) {
-        return cuisineRepository.findByPrice(price);
+        return cuisineRepository.findByCusinePrice(price);
     }
 
-    public double calculateTotalCost(Long cuisineId, int quantity) {
-        Cuisine cuisine = getCuisineById(cuisineId);
-        if (cuisine != null) {
-            return cuisine.calculatePrice(quantity);
-        }
-        return 0;
-    }
+    // Additional methods for CRUD operations
 }

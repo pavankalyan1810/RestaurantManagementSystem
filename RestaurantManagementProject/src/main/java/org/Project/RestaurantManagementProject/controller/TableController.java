@@ -45,8 +45,8 @@ public class TableController {
 
     
     @PostMapping("/{id}/book")
-    public ResponseEntity<?> bookTable(@PathVariable Long id, @RequestParam Long cuisineId) {
-        return new ResponseEntity<>(tableService.bookTable(id,cuisineId),HttpStatus.OK);
+    public ResponseEntity<?> bookTable(@PathVariable Long id, @RequestParam Long CusineId) {
+        return new ResponseEntity<>(tableService.bookTable(id,CusineId),HttpStatus.OK);
     }
    
     

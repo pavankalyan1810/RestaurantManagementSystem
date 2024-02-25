@@ -18,6 +18,8 @@ public class TableService {
     
     @Autowired
     private CuisineRepository cuisineRepository;
+
+	
     
     public TablesInRestaurant addTable(TablesInRestaurant table) {
         return tableRepository.save(table);
@@ -36,9 +38,9 @@ public class TableService {
         return tableRepository.findByBookedFalse();
     }
 
-    public String bookTable(Long id, Long cuisineId) {
+    public String bookTable(Long id, Long CusineId) {
         Optional<TablesInRestaurant> optionalTable = tableRepository.findById(id);
-        Optional<Cuisine> optionalCuisine = cuisineRepository.findById(cuisineId);
+        Optional<Cuisine> optionalCuisine = cuisineRepository.findById(CusineId);
         if (optionalTable.isPresent() && optionalCuisine.isPresent()) {
             TablesInRestaurant table = optionalTable.get();
             if (table.isBooked() ) {
